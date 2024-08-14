@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App {
+  @apply bg-slate-50 text-neutral-700;
+  position: relative;
+  height: 100vh;
+  min-height: 720px;
+}
+
+.btn {
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-active {
+  transform: scale(1.1);
+}
+
+.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cell {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
