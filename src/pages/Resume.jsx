@@ -12,15 +12,16 @@ import {
   deleteFromFirestore,
   updateFirestore,
 } from "../DAL";
+import { useAppContext } from "../context/AppContext";
 
 function Resume() {
-  const [data, setData] = useState([]);
+  const { sharedData, setSharedData } = useAppContext();
   const [isActive, setIsActive] = useState(null);
   const [showNewEntry, setShowNewEntry] = useState(null);
   const [editEntry, setEditEntry] = useState(null);
 
   useEffect(() => {
-    getAllFromFirestore().then((data) => setData(data));
+    getAllFromFirestore().then((data) => setSharedData(data));
   }, []);
 
   const newEntryValues = {
@@ -41,8 +42,8 @@ function Resume() {
 
   const handleEdit = (id, entry) => {
     updateFirestore(id, entry).then(() => {
-      // getAllFromFirestore().then((data) => setData(data));
-      setData(data => {
+      // getAllFromFirestore().then((data) => setSharedData(data));
+      setSharedData(data => {
         return data.map(d => d.id === id ? entry : d)
       });
       setEditEntry(null);
@@ -52,7 +53,7 @@ function Resume() {
   const handleDelete = (id) => {
     deleteFromFirestore(id).then(() => {
       getAllFromFirestore()
-        .then((data) => setData(data))
+        .then((data) => setSharedData(data))
         .then(() => {
           setEditEntry(null);
         });
@@ -61,7 +62,7 @@ function Resume() {
 
   const handleNewEntry = (newEntry) => {
     saveToFirestore(newEntry).then(() => {
-      getAllFromFirestore().then((data) => setData(data));
+      getAllFromFirestore().then((data) => setSharedData(data));
       setShowNewEntry(null);
     });
   };
@@ -93,7 +94,7 @@ function Resume() {
             initialValues={{ fecha: "" }}
             onSubmit={(values, { resetForm }) => {
               getAllFromFirestore(values.fecha).then((data) => {
-                setData(data);
+                setSharedData(data);
                 resetForm();
               });
             }}
@@ -124,7 +125,7 @@ function Resume() {
               Nueva Entrada
             </button>
             <ExcelUploader
-              onUploadFile={(fileData) => setData([...fileData, ...data])}
+              onUploadFile={(fileData) => setSharedData([...fileData, ...data])}
             />
           </div>
         </div>
@@ -148,8 +149,8 @@ function Resume() {
               </tr>
             </thead>
             <tbody className="bg-slate-100 text-center text-sm ">
-              {data?.length > 0 ? (
-                data
+              {sharedData?.length > 0 ? (
+                sharedData
                   .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
                   .map((item, index) => (
                     <tr

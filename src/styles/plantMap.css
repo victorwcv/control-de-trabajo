@@ -1,0 +1,92 @@
+.plantMap {
+  width: 1200px;
+  height: 700px; /* O ajusta a tu necesidad */
+  display: grid;
+  gap: 10px; /* Espacio entre las secciones */
+  border-radius: 10px;
+  /* background-color: #bff1ff; */
+  grid-template-columns: repeat(8, 1fr); /* 8 columnas de igual tamaño */
+  grid-template-rows: repeat(5, 1fr); /* 5 filas de igual tamaño */
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+    "ssaa1 ssaa1 ssaa1 ssaa2 ssaa2 ssaa2 almacen2 almacen2"
+    "ssaa1 ssaa1 ssaa1 ssaa2 ssaa2 ssaa2 almacen2 almacen2"
+    "planta3 planta3 planta1 planta1 planta1 planta1 almacen2 almacen2"
+    "planta3 planta3 planta1 planta1 planta1 planta1 almacen1 almacen1"
+    "planta3 planta3 planta2 planta2 planta2 planta2 almacen1 almacen1"
+    "planta3 planta3 planta2 planta2 planta2 planta2 almacen1 almacen1";
+}
+
+.area {
+  position: relative;
+  border: 1px solid #ccc; /* Borde de las secciones */
+  font-size: 2rem;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.area__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.area p {
+  font-weight: 700;
+}
+
+.planta1 {
+  @apply bg-slate-100;
+  grid-area: planta1;
+}
+
+.planta2 {
+  @apply bg-slate-100;
+  grid-area: planta2;
+}
+
+.planta3 {
+  @apply bg-slate-100;
+  grid-area: planta3;
+}
+
+.almacen1 {
+  @apply bg-slate-100;
+  grid-area: almacen1;
+}
+
+.almacen2 {
+  @apply bg-slate-100;
+  grid-area: almacen2;
+}
+
+.ssaa1 {
+  @apply bg-slate-100;
+  grid-area: ssaa1;
+}
+
+.ssaa2 {
+  @apply bg-slate-100;
+  grid-area: ssaa2;
+}
+
+.shine {
+  margin: 0 .5rem;
+  cursor: pointer;
+  animation: shine 2s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    filter: drop-shadow(0 0 1px rgba(255, 0, 0, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 1px rgba(255, 0, 0, 0.5));
+  }
+}

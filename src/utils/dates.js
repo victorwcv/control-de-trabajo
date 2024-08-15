@@ -11,3 +11,8 @@ export const dateFormated = (date) => {
   return format(dateFormated, "yyyy-MM-dd'T'HH:mm:ss");
 }
 
+export const shortDateFormated = () => {
+  const todayUTC = new Date().toISOString();
+  const date = parseISO(todayUTC);
+  return format(date, "dd/MM/yyyy");
+}

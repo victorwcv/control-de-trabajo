@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   @apply bg-slate-50 text-neutral-700;
   position: relative;
