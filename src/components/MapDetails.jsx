@@ -16,20 +16,20 @@ function MapDetails() {
           <br />
           <hr />
           <br />
-          <li className="mb-1">
+          <li className="mb-1 flex justify-between border-b">
             <span className=" text-left font-semibold">
               Permisos registrados:{" "}
             </span>
-            {sharedData?.length}
+            <span>{sharedData?.length}</span>
           </li>
 
-          <li className="mb-1">
+          <li className="mb-1 flex justify-between border-b">
             <span className=" text-left font-semibold">
               Permisos abiertos:{" "}
             </span>
             {sharedData?.filter((entry) => entry.horaAp).length}
           </li>
-          <li className="mb-1">
+          <li className="mb-1 flex justify-between border-b">
             <span className=" text-left font-semibold">
               Permisos por abrir:{" "}
             </span>
@@ -39,7 +39,7 @@ function MapDetails() {
             }
           </li>
 
-          <li className="mb-1">
+          <li className="mb-1 flex justify-between border-b">
             <span className=" text-left font-semibold">
               Permisos cerrados:{" "}
             </span>
@@ -49,7 +49,7 @@ function MapDetails() {
             }
           </li>
 
-          <li className="mb-1">
+          <li className="mb-1 flex justify-between border-b">
             <span className=" text-left font-semibold">
               Permisos en ejecucion:{" "}
             </span>
@@ -58,7 +58,7 @@ function MapDetails() {
                 .length
             }
           </li>
-          <li className="mb-1">
+          <li className="mb-1 flex justify-between border-b">
             <p className="font-semibold">Total personas en ejecucion: </p>
             {sharedData
               ?.filter((entry) => entry.horaAp && !entry.horaCierre)
