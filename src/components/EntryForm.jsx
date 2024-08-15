@@ -49,8 +49,8 @@ function EntryForm({
                       name={inp.NAME}
                       type={inp.TYPE}
                       placeholder={inp.PLACEHOLDER}
-                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] read-only:opacity-75"
-                      readOnly={
+                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] disabled:bg-white disabled:bg-opacity-50 disabled:text-neutral-500"
+                      disabled={
                         inp.NAME === "horaAp" || inp.NAME === "horaCierre"
                           ? false
                           : disabled
@@ -60,8 +60,8 @@ function EntryForm({
                     <Field
                       as="select"
                       name={inp.NAME}
-                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] read-only:opacity-75"
-                      readOnly={disabled}
+                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] disabled:bg-white disabled:bg-opacity-50 "
+                      disabled={disabled}
                     >
                       <option value="">{inp.PLACEHOLDER}</option>
                       {inp.OPTIONS.map((option) => (
@@ -72,7 +72,7 @@ function EntryForm({
                     </Field>
                   ) : (
                     <DatePicker
-                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] read-only:opacity-75"
+                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] disabled:bg-white disabled:bg-opacity-50 disabled:text-neutral-500"
                       selected={formik.values.fecha}
                       onChange={(date) =>
                         formik.setFieldValue(
@@ -85,7 +85,7 @@ function EntryForm({
                       }
                       dateFormat="dd/MM/yyyy"
                       placeholderText="dd/mm/yyyy"
-                      readOnly={disabled}
+                      disabled={disabled}
                     />
                   )}
                   <p className="text-red-500 mr-4 h-1 text-sm text-right">
