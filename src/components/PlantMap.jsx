@@ -28,15 +28,36 @@ function PlantMap() {
     return () => unsubscribe();
   }, [setSharedData]);
 
-  const _AREAS = {
-    planta1: "Planta 1",
-    planta2: "Planta 2",
-    planta3: "Planta 3",
-    almacen1: "Almacen 1",
-    almacen2: "Almacen 2",
-    ssaa1: "SS.AA. 1",
-    ssaa2: "SS.AA. 2",
-  };
+  const _AREAS = [
+    {
+      name: "Planta 1",
+      className: "planta1",
+    },
+    {
+      name: "Planta 2",
+      className: "planta2",
+    },
+    {
+      name: "Planta 3",
+      className: "planta3",
+    },
+    {
+      name: "Almacen 1",
+      className: "almacen1",
+    },
+    {
+      name: "Almacen 2",
+      className: "almacen2",
+    },
+    {
+      name: "SS.AA. 1",
+      className: "ssaa1",
+    },
+    {
+      name: "SS.AA. 2",
+      className: "ssaa2",
+    },
+  ];
 
   const areaWorking = (area) => {
     const working = sharedData?.filter(
@@ -47,118 +68,28 @@ function PlantMap() {
 
   return (
     <div className="plantMap">
-      <div className="area planta1">
-        <p className="area__title">Planta 1</p>
-        {areaWorking(_AREAS.planta1)?.map((data) => (
-          <img
-            key={data.id}
-            src="./images/pointer.png"
-            className="size-6 inline-block shine"
-            alt="pointer"
-            title={data?.nPDT}
-            onClick={() => {
-              setWorkPermit(null);
-              setWorkPermit(data);
-            }}
-          />
-        ))}
-      </div>
-      <div className="area planta2">
-        <p className="area__title">Planta 2 </p>
-        {areaWorking(_AREAS.planta2)?.map((data) => (
-          <img
-            key={data.id}
-            src="./images/pointer.png"
-            className="size-6 inline-block shine"
-            alt="pointer"
-            title={data?.nPDT}
-            onClick={() => {
-              setWorkPermit(null);
-              setWorkPermit(data);
-            }}
-          />
-        ))}
-      </div>
-      <div className="area planta3">
-        <p className="area__title">Planta 3</p>
-        {areaWorking(_AREAS.planta3)?.map((data) => (
-          <img
-            key={data.id}
-            src="./images/pointer.png"
-            className="size-6 inline-block shine"
-            alt="pointer"
-            title={data?.nPDT}
-            onClick={() => {
-              setWorkPermit(null);
-              setWorkPermit(data);
-            }}
-          />
-        ))}
-      </div>
-      <div className="area almacen1">
-        <p className="area__title">Almacén 1</p>
-        {areaWorking(_AREAS.almacen1)?.map((data) => (
-          <img
-            key={data.id}
-            src="./images/pointer.png"
-            className="size-6 inline-block shine"
-            alt="pointer"
-            title={data?.nPDT}
-            onClick={() => {
-              setWorkPermit(null);
-              setWorkPermit(data);
-            }}
-          />
-        ))}
-      </div>
-      <div className="area almacen2">
-        <p className="area__title">Almacén 2</p>
-        {areaWorking(_AREAS.almacen2)?.map((data) => (
-          <img
-            key={data.id}
-            src="./images/pointer.png"
-            className="size-6 inline-block shine"
-            alt="pointer"
-            title={data?.nPDT}
-            onClick={() => {
-              setWorkPermit(null);
-              setWorkPermit(data);
-            }}
-          />
-        ))}
-      </div>
-      <div className="area ssaa1">
-        <p className="area__title">SSAA 1</p>
-        {areaWorking(_AREAS.ssaa1)?.map((data) => (
-          <img
-            key={data.id}
-            src="./images/pointer.png"
-            className="size-6 inline-block shine"
-            alt="pointer"
-            title={data?.nPDT}
-            onClick={() => {
-              setWorkPermit(null);
-              setWorkPermit(data);
-            }}
-          />
-        ))}
-      </div>
-      <div className="area ssaa2">
-        <p className="area__title">SSAA 2</p>
-        {areaWorking(_AREAS.ssaa2)?.map((data) => (
-          <img
-            key={data.id}
-            src="./images/pointer.png"
-            className="size-6 inline-block shine"
-            alt="pointer"
-            title={data?.nPDT}
-            onClick={() => {
-              setWorkPermit(null);
-              setWorkPermit(data);
-            }}
-          />
-        ))}
-      </div>
+      {_AREAS.map((area, index) => (
+        <div key={index} className={`area ${area.className}`}>
+          <p className="area__title">{area.name}</p>
+          {areaWorking(area.name)?.map((data) => (
+            <div
+              key={data.id}
+              className="cursor-pointer inline-flex flex-col justify-center items-center m-2"
+              onClick={() => {
+                setWorkPermit(null);
+                setWorkPermit(data);
+              }}
+            >
+              <img
+                src="./images/pointer.png"
+                className="size-6 shine"
+                alt="pointer"
+              />
+              <small className="text-xs">{data?.nPDT}</small>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

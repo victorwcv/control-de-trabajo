@@ -82,14 +82,14 @@ function MapDetails() {
             </>
           ) : (
             <div className="flex flex-col justify-center items-center">
-              <p className=" font-semibold text-center mx-6 mb-6 mt-16">
-                Seleccione un permiso para ver los detalles
-              </p>
               <img
                 src="/images/pointer.png"
                 alt="pointer"
-                className="size-14"
+                className="size-14 mt-20"
               />
+              <p className=" font-semibold text-center mx-6">
+                Seleccione un permiso para ver los detalles
+              </p>
             </div>
           )}
         </div>

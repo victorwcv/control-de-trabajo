@@ -49,8 +49,8 @@ function EntryForm({
                       name={inp.NAME}
                       type={inp.TYPE}
                       placeholder={inp.PLACEHOLDER}
-                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px]"
-                      disabled={
+                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] read-only:opacity-75"
+                      readOnly={
                         inp.NAME === "horaAp" || inp.NAME === "horaCierre"
                           ? false
                           : disabled
@@ -60,8 +60,8 @@ function EntryForm({
                     <Field
                       as="select"
                       name={inp.NAME}
-                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px]"
-                      disabled={disabled}
+                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] read-only:opacity-75"
+                      readOnly={disabled}
                     >
                       <option value="">{inp.PLACEHOLDER}</option>
                       {inp.OPTIONS.map((option) => (
@@ -72,7 +72,7 @@ function EntryForm({
                     </Field>
                   ) : (
                     <DatePicker
-                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px]"
+                      className="border border-slate-300 px-4 py-2 rounded-md outline-none w-[250px] read-only:opacity-75"
                       selected={formik.values.fecha}
                       onChange={(date) =>
                         formik.setFieldValue(
@@ -85,7 +85,7 @@ function EntryForm({
                       }
                       dateFormat="dd/MM/yyyy"
                       placeholderText="dd/mm/yyyy"
-                      disabled={disabled}
+                      readOnly={disabled}
                     />
                   )}
                   <p className="text-red-500 mr-4 h-1 text-sm text-right">

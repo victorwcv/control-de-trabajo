@@ -1,12 +1,11 @@
 .plantMap {
+  position: relative;
   width: 1200px;
-  height: 700px; /* O ajusta a tu necesidad */
+  height: 800px; 
   display: grid;
-  gap: 10px; /* Espacio entre las secciones */
   border-radius: 10px;
-  /* background-color: #bff1ff; */
-  grid-template-columns: repeat(8, 1fr); /* 8 columnas de igual tamaño */
-  grid-template-rows: repeat(5, 1fr); /* 5 filas de igual tamaño */
+  grid-template-columns: repeat(8, 1fr); 
+  grid-template-rows: repeat(5, 1fr); 
   grid-auto-rows: minmax(100px, auto);
   grid-template-areas:
     "ssaa1 ssaa1 ssaa1 ssaa2 ssaa2 ssaa2 almacen2 almacen2"
@@ -15,14 +14,19 @@
     "planta3 planta3 planta1 planta1 planta1 planta1 almacen1 almacen1"
     "planta3 planta3 planta2 planta2 planta2 planta2 almacen1 almacen1"
     "planta3 planta3 planta2 planta2 planta2 planta2 almacen1 almacen1";
+
+    background-image: url('./images/top_view.jpg');
+    background-size: contain; 
+    background-position: center;
+    background-color: rgba(255, 255, 255, .75); 
+    background-blend-mode: overlay; 
 }
 
 .area {
   position: relative;
-  border: 1px solid #ccc; /* Borde de las secciones */
   font-size: 2rem;
-  border-radius: 10px;
   padding: 1rem;
+  gap: 1rem;
 }
 
 .area__title {
@@ -39,42 +43,59 @@
 }
 
 .planta1 {
-  @apply bg-slate-100;
+  /* @apply bg-slate-100; */
   grid-area: planta1;
+  border: 2px dashed #000;
 }
 
 .planta2 {
-  @apply bg-slate-100;
+  /* @apply bg-slate-100; */
   grid-area: planta2;
+  border-bottom: 2px dashed #000;
+  border-left: 2px dashed #000;
+  border-right: 2px dashed #000;
 }
 
 .planta3 {
-  @apply bg-slate-100;
+  /* @apply bg-slate-100; */
   grid-area: planta3;
+  border-bottom: 2px dashed #000;
+  border-top: 2px dashed #000;
+  border-left: 2px dashed #000;
 }
 
 .almacen1 {
-  @apply bg-slate-100;
+  /* @apply bg-slate-100; */
   grid-area: almacen1;
+  border-top: 2px dashed #000;
+  border-bottom: 2px dashed #000;
+  border-right: 2px dashed #000;
 }
 
 .almacen2 {
-  @apply bg-slate-100;
+  /* @apply bg-slate-100; */
   grid-area: almacen2;
+  border-top: 2px dashed #000;
+  border-right: 2px dashed #000;
 }
 
 .ssaa1 {
-  @apply bg-slate-100;
+  /* @apply bg-slate-100; */
   grid-area: ssaa1;
+  border-top: 2px dashed #000;
+  border-left: 2px dashed #000;
+  border-right: 2px dashed #000;
 }
 
 .ssaa2 {
-  @apply bg-slate-100;
+  /* @apply bg-slate-100; */
   grid-area: ssaa2;
+  border-top: 2px dashed #000;
+  border-right: 2px dashed #000;
 }
 
 .shine {
-  margin: 0 .5rem;
+  margin: 0 0.5rem;
   cursor: pointer;
   animation: shine 2s ease-in-out infinite;
 }
