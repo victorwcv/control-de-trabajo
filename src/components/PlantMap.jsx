@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import "../styles/plantMap.css";
 import { useAppContext } from "../context/AppContext";
-import { getAllFromFirestore } from "../DAL";
 import { db } from "../firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { currentDateFormated } from "../utils/dates";
+import { usePlotContext } from "../context/PlotContext";
 
 function PlantMap() {
   const { sharedData, setSharedData } = useAppContext();
-  console.log(sharedData);
+  const { setWorkPermit } = usePlotContext();
 
   useEffect(() => {
     const date = currentDateFormated().split("T")[0];
@@ -22,7 +22,7 @@ function PlantMap() {
     // Escucha los cambios en tiempo real en la colección específica de Firestore
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setSharedData(data); 
+      setSharedData(data);
     });
     // Limpia la suscripción cuando el componente se desmonta
     return () => unsubscribe();
@@ -55,7 +55,11 @@ function PlantMap() {
             src="./images/pointer.png"
             className="size-6 inline-block shine"
             alt="pointer"
-            title={data?.ejecutante}
+            title={data?.nPDT}
+            onClick={() => {
+              setWorkPermit(null);
+              setWorkPermit(data);
+            }}
           />
         ))}
       </div>
@@ -67,7 +71,11 @@ function PlantMap() {
             src="./images/pointer.png"
             className="size-6 inline-block shine"
             alt="pointer"
-            title={data?.ejecutante}
+            title={data?.nPDT}
+            onClick={() => {
+              setWorkPermit(null);
+              setWorkPermit(data);
+            }}
           />
         ))}
       </div>
@@ -79,7 +87,11 @@ function PlantMap() {
             src="./images/pointer.png"
             className="size-6 inline-block shine"
             alt="pointer"
-            title={data?.ejecutante}
+            title={data?.nPDT}
+            onClick={() => {
+              setWorkPermit(null);
+              setWorkPermit(data);
+            }}
           />
         ))}
       </div>
@@ -91,7 +103,11 @@ function PlantMap() {
             src="./images/pointer.png"
             className="size-6 inline-block shine"
             alt="pointer"
-            title={data?.ejecutante}
+            title={data?.nPDT}
+            onClick={() => {
+              setWorkPermit(null);
+              setWorkPermit(data);
+            }}
           />
         ))}
       </div>
@@ -103,7 +119,11 @@ function PlantMap() {
             src="./images/pointer.png"
             className="size-6 inline-block shine"
             alt="pointer"
-            title={data?.ejecutante}
+            title={data?.nPDT}
+            onClick={() => {
+              setWorkPermit(null);
+              setWorkPermit(data);
+            }}
           />
         ))}
       </div>
@@ -115,7 +135,11 @@ function PlantMap() {
             src="./images/pointer.png"
             className="size-6 inline-block shine"
             alt="pointer"
-            title={data?.ejecutante}
+            title={data?.nPDT}
+            onClick={() => {
+              setWorkPermit(null);
+              setWorkPermit(data);
+            }}
           />
         ))}
       </div>
@@ -127,7 +151,11 @@ function PlantMap() {
             src="./images/pointer.png"
             className="size-6 inline-block shine"
             alt="pointer"
-            title={data?.ejecutante}
+            title={data?.nPDT}
+            onClick={() => {
+              setWorkPermit(null);
+              setWorkPermit(data);
+            }}
           />
         ))}
       </div>

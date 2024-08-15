@@ -1,38 +1,48 @@
 import { useAppContext } from "../context/AppContext";
+import { usePlotContext } from "../context/PlotContext";
 import { shortDateFormated } from "../utils/dates";
+import PlotPermitDetails from "./PlotPermitDetails";
 
 function MapDetails() {
-  const { sharedData, setSharedData } = useAppContext();
+  const { sharedData } = useAppContext();
+  const { workPermit, setWorkPermit } = usePlotContext();
 
   return (
     <div className="w-[300px] h-[700px] bg-slate-50 rounded-lg ">
       <h2 className="text-center font-bold text-2xl mt-4">Resumen</h2>
       <div className="flex flex-col gap-2 p-4">
         <ul className="text-center">
-          <li>
-            {shortDateFormated()}
-          </li>
+          <li>{shortDateFormated()}</li>
           <br />
           <hr />
           <br />
           <li className="mb-1">
-            <p className="block text-left font-semibold">
+            <span className=" text-left font-semibold">
               Permisos registrados:{" "}
-            </p>
+            </span>
             {sharedData?.length}
           </li>
 
           <li className="mb-1">
-            <p className="block text-left font-semibold">Permisos abiertos: </p>
+            <span className=" text-left font-semibold">
+              Permisos abiertos:{" "}
+            </span>
             {sharedData?.filter((entry) => entry.horaAp).length}
           </li>
           <li className="mb-1">
-            <p className="block text-left font-semibold">Permisos por abrir: </p>
-            {sharedData?.filter((entry) => !entry.horaAp && !entry.horaCierre).length}
+            <span className=" text-left font-semibold">
+              Permisos por abrir:{" "}
+            </span>
+            {
+              sharedData?.filter((entry) => !entry.horaAp && !entry.horaCierre)
+                .length
+            }
           </li>
 
           <li className="mb-1">
-            <p className="block text-left font-semibold">Permisos cerrados: </p>
+            <span className=" text-left font-semibold">
+              Permisos cerrados:{" "}
+            </span>
             {
               sharedData?.filter((entry) => entry.horaAp && entry.horaCierre)
                 .length
@@ -40,18 +50,16 @@ function MapDetails() {
           </li>
 
           <li className="mb-1">
-            <p className="block text-left font-semibold">
+            <span className=" text-left font-semibold">
               Permisos en ejecucion:{" "}
-            </p>
+            </span>
             {
               sharedData?.filter((entry) => entry.horaAp && !entry.horaCierre)
                 .length
             }
           </li>
           <li className="mb-1">
-            <p className="block text-left font-semibold">
-              Total personas en ejecucion:{" "}
-            </p>
+            <p className="font-semibold">Total personas en ejecucion: </p>
             {sharedData
               ?.filter((entry) => entry.horaAp && !entry.horaCierre)
               .reduce((prev, curr) => prev + curr?.numPersonas, 0)}
@@ -59,8 +67,32 @@ function MapDetails() {
 
           <br />
           <hr />
-          <br />
         </ul>
+        <div className="relative">
+          {workPermit ? (
+            <>
+              <button
+                className="absolute top-0 right-0 font-bold bg-red-500 text-white px-2 rounded-sm"
+                onClick={() => setWorkPermit(null)}
+              >
+                X
+              </button>
+
+              <PlotPermitDetails workPermit={workPermit} />
+            </>
+          ) : (
+            <div className="flex flex-col justify-center items-center">
+              <p className=" font-semibold text-center mx-6 mb-6 mt-16">
+                Seleccione un permiso para ver los detalles
+              </p>
+              <img
+                src="/images/pointer.png"
+                alt="pointer"
+                className="size-14"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
