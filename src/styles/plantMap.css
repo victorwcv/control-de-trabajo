@@ -18,7 +18,7 @@
     background-image: url('./images/top_view.jpg');
     background-size: contain; 
     background-position: center;
-    background-color: rgba(255, 255, 255, .75); 
+    background-color: rgba(255, 255, 255, .85); 
     background-blend-mode: overlay; 
 }
 
@@ -26,7 +26,7 @@
   position: relative;
   font-size: 2rem;
   padding: 1rem;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
 
 .area__title {
@@ -36,11 +36,20 @@
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: 1.5rem;
-}
-
-.area p {
   font-weight: 700;
 }
+
+/* .popover {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 700;
+  transition: all .2s;
+  padding: .5rem;
+} */
 
 .planta1 {
   /* @apply bg-slate-100; */
