@@ -55,7 +55,7 @@ const ExcelUploader = ({ onUploadFile }) => {
         htmlFor="file-upload"
         className="bg-green-500 text-white px-6 py-2 rounded-full cursor-pointer"
       >
-        Subir archivo Excel
+        Importar PDTs
       </label>
 
       <input

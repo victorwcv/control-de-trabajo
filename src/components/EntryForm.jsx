@@ -13,7 +13,6 @@ function EntryForm({
   initialValues,
   disabled = false,
 }) {
-
   return (
     <div className="absolute inset-0 bg-black bg-opacity-80 flex items-center justify-center z-40">
       <Formik
@@ -39,8 +38,8 @@ function EntryForm({
         })}
       >
         {(formik) => (
-          <Form className="bg-slate-200 p-8 rounded-lg flex flex-col">
-            <div className=" max-w-[800px] flex justify-center flex-wrap gap-4">
+          <Form className="bg-slate-100 max-w-[850px] max-h-[90%] p-8 m-4 rounded-lg flex flex-col">
+            <div className="  flex justify-center flex-wrap gap-4 h-full w-full overflow-auto">
               {IMPUT_FIELDS.map((inp) => (
                 <div key={inp.NAME}>
                   <p className="ml-4">{inp.LABEL}</p>
@@ -94,24 +93,26 @@ function EntryForm({
                 </div>
               ))}
             </div>
-            <div className="w-full flex justify-center gap-4 mt-8">
-              <button type="submit" className="btn bg-teal-500 w-32">
-                Guardar
-              </button>
+            <div className="w-full flex flex-wrap sm:justify-between justify-center gap-4 mt-8">
+              <div className="flex gap-4">
+                <button type="submit" className="btn bg-teal-500 w-32">
+                  Guardar
+                </button>
 
-              <button
-                type="button"
-                onClick={onShowForm}
-                className="btn bg-blue-500 w-32"
-              >
-                Cancelar
-              </button>
+                <button
+                  type="button"
+                  onClick={onShowForm}
+                  className="btn bg-blue-500 w-32"
+                >
+                  Cancelar
+                </button>
+              </div>
 
               {onDelete && (
                 <button
                   type="button"
                   onClick={() => onDelete(initialValues.id)}
-                  className="btn bg-red-500 w-32 ml-auto"
+                  className="btn bg-red-500 w-32"
                 >
                   Eliminar
                 </button>

@@ -43,8 +43,8 @@ function Resume() {
   const handleEdit = (id, entry) => {
     updateFirestore(id, entry).then(() => {
       // getAllFromFirestore().then((data) => setSharedData(data));
-      setSharedData(data => {
-        return data.map(d => d.id === id ? entry : d)
+      setSharedData((data) => {
+        return data.map((d) => (d.id === id ? entry : d));
       });
       setEditEntry(null);
     });
@@ -86,8 +86,8 @@ function Resume() {
           disabled={true}
         />
       )}
-      <section className="container mx-auto px-8 py-4 h-[calc(100vh-64px)]">
-        <div className="flex justify-around items-center my-8">
+      <section className="container mx-auto md:px-8 px-2 py-4 h-[calc(100vh-64px)]">
+        <div className="flex flex-wrap justify-around items-center gap-4 my-8">
           <h2 className="text-2xl font-bold">Anexo 1</h2>
 
           <Formik
@@ -100,9 +100,9 @@ function Resume() {
             }}
           >
             {(formik) => (
-              <Form className="flex items-cente justify-center">
+              <Form className="flex flex-wrap items-center justify-center">
                 <DatePicker
-                  className="border border-slate-300 px-4 py-2 rounded-full outline-none w-[150px] text-center"
+                  className="border border-slate-300 px-4 py-2 m rounded-full  text-center"
                   selected={formik.values.fecha}
                   onChange={(date) =>
                     formik.setFieldValue("fecha", date.toISOString())
@@ -110,26 +110,26 @@ function Resume() {
                   dateFormat="dd/MM/yyyy"
                   placeholderText="Ingrese Fecha"
                 />
-                <button type="submit" className="btn bg-teal-500 ml-4">
+                <button type="submit" className="btn bg-teal-500 m-2">
                   Buscar Registro
                 </button>
               </Form>
             )}
           </Formik>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center items-center gap-2">
             <button
               type="button"
               onClick={setShowNewEntry}
               className="bg-blue-500 text-white px-6 py-2 rounded-full"
             >
-              Nueva Entrada
+              Crear PDT
             </button>
             <ExcelUploader
               onUploadFile={(fileData) => setSharedData([...fileData, ...data])}
             />
           </div>
         </div>
-        <div className="relative overflow-auto min-w-[700px] max-h-[80%] shadow-md">
+        <div className="relative overflow-auto  lg:max-h-[80%] max-h-max shadow-md">
           <table className="table-auto w-full">
             <thead className="bg-slate-200 text-nowrap text-center sticky top-0">
               <tr className="">
@@ -161,7 +161,6 @@ function Resume() {
                       onClick={() => {
                         setEditEntry(item);
                         setIsActive(item.id);
-                        console.log(item);
                       }}
                     >
                       <td className="cell p-2">{index + 1}</td>

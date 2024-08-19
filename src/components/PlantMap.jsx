@@ -67,12 +67,14 @@ function PlantMap() {
     return working;
   };
 
+
+
   return (
     <div className="plantMap">
       {_AREAS.map((area, index) => (
         <div key={index} className={`area ${area.className}`}>
           <button className="area__title">{area.name}</button>
-          <Popover />
+          <Popover areaName={area.name} />
           
           {areaWorking(area.name)?.map((data) => (
             <div
