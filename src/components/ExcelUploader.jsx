@@ -20,7 +20,6 @@ const ExcelUploader = ({ onUploadFile }) => {
       jsonData.shift(); // Eliminar la primera fila (cabecera)
       // Separar las cabeceras y las filas
       const headers = jsonData[0].slice(1).map((header) => header.trim()); // Tomar las cabeceras desde la segunda columna
-      console.log(headers);
       
       const rows = jsonData.slice(1); // Omitir la primera fila (cabeceras)
   

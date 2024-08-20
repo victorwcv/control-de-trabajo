@@ -42,7 +42,6 @@ function Resume() {
 
   const handleEdit = (id, entry) => {
     updateFirestore(id, entry).then(() => {
-      // getAllFromFirestore().then((data) => setSharedData(data));
       setSharedData((data) => {
         return data.map((d) => (d.id === id ? entry : d));
       });
@@ -71,6 +70,7 @@ function Resume() {
     <>
       {showNewEntry && (
         <EntryForm
+          form={"new"}
           onShowForm={() => setShowNewEntry(null)}
           onSave={handleNewEntry}
           initialValues={fakeEntryValues()}
@@ -79,6 +79,7 @@ function Resume() {
 
       {editEntry && (
         <EntryForm
+          form={"edit"}
           onShowForm={() => setEditEntry(null)}
           onEdit={handleEdit}
           onDelete={handleDelete}
@@ -129,7 +130,7 @@ function Resume() {
             />
           </div>
         </div>
-        <div className="relative overflow-auto  lg:max-h-[80%] max-h-max shadow-md">
+        <div className="relative overflow-auto shadow-md">
           <table className="table-auto w-full">
             <thead className="bg-slate-200 text-nowrap text-center sticky top-0">
               <tr className="">

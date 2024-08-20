@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format, parseISO } from "date-fns";
 
 function EntryForm({
+  form,
   onShowForm,
   onSave,
   onEdit,
@@ -18,8 +19,8 @@ function EntryForm({
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          if (onSave) onSave(values);
-          if (onEdit) onEdit(values.id, values);
+          if (form === "new") onSave(values);
+          if (form === "edit") onEdit(values.id, values);
         }}
         validationSchema={Yup.object({
           nPDT: Yup.string().required("Requerido"),
@@ -93,8 +94,8 @@ function EntryForm({
                 </div>
               ))}
             </div>
-            <div className="w-full flex flex-wrap sm:justify-between justify-center gap-4 mt-8">
-              <div className="flex gap-4">
+            <div className={`w-full flex flex-col gap-4 mt-8 `}>
+              <div className="flex m-auto gap-4">
                 <button type="submit" className="btn bg-teal-500 w-32">
                   Guardar
                 </button>
@@ -108,11 +109,11 @@ function EntryForm({
                 </button>
               </div>
 
-              {onDelete && (
+              {form === "edit" && (
                 <button
                   type="button"
                   onClick={() => onDelete(initialValues.id)}
-                  className="btn bg-red-500 w-32"
+                  className="btn bg-red-500 w-32 m-auto"
                 >
                   Eliminar
                 </button>

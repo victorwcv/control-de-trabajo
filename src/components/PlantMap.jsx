@@ -5,7 +5,7 @@ import { db } from "../firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { currentDateFormated } from "../utils/dates";
 import { usePlotContext } from "../context/PlotContext";
-import Popover from "./Popover";
+import NumOfPeople from "./NumOfPeople";
 
 function PlantMap() {
   const { sharedData, setSharedData } = useAppContext();
@@ -67,15 +67,15 @@ function PlantMap() {
     return working;
   };
 
-
-
   return (
     <div className="plantMap">
       {_AREAS.map((area, index) => (
-        <div key={index} className={`area ${area.className}`}>
-          <button className="area__title">{area.name}</button>
-          <Popover areaName={area.name} />
-          
+        <div key={index} className={`relative p-1 border-2 border-slate-300 ${area.className}`}>
+          <h2 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center lg:text-2xl text-base font-semibold">
+            {area.name}
+          </h2>
+          <NumOfPeople areaName={area.name} />
+
           {areaWorking(area.name)?.map((data) => (
             <div
               key={data.id}

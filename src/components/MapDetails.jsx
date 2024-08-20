@@ -9,7 +9,7 @@ function MapDetails() {
 
   return (
     <div className="w-[300px] h-[700px] bg-slate-50 rounded-lg ">
-      <h2 className="text-center font-bold text-2xl mt-4">Resumen</h2>
+      <h2 className="text-center font-bold text-2xl mt-4">Detalles</h2>
       <div className="flex flex-col gap-2 p-4">
         <ul className="text-center">
           <li>{shortDateFormated()}</li>

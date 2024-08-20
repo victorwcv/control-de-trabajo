@@ -1,11 +1,13 @@
 .plantMap {
   position: relative;
-  width: 1200px;
-  height: 800px; 
   display: grid;
+  width: 100%;
+  min-width: 300px;
+  min-height: 720px;
+  height: 100%;
   border-radius: 10px;
-  grid-template-columns: repeat(8, 1fr); 
-  grid-template-rows: repeat(5, 1fr); 
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-auto-rows: minmax(100px, auto);
   grid-template-areas:
     "ssaa1 ssaa1 ssaa1 ssaa2 ssaa2 ssaa2 almacen2 almacen2"
@@ -15,92 +17,39 @@
     "planta3 planta3 planta2 planta2 planta2 planta2 almacen1 almacen1"
     "planta3 planta3 planta2 planta2 planta2 planta2 almacen1 almacen1";
 
-    background-image: url('./images/top_view.jpg');
-    background-size: contain; 
-    background-position: center;
-    background-color: rgba(255, 255, 255, .85); 
-    background-blend-mode: overlay; 
+  background-image: url("./images/top_view.jpg");
+  background-size: contain;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  background-blend-mode: overlay;
 }
-
-.area {
-  position: relative;
-  font-size: 2rem;
-  padding: 1rem;
-  /* gap: 1rem; */
-}
-
-.area__title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
-/* .popover {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  text-align: center;
-  font-size: 2rem;
-  line-height: 2rem;
-  font-weight: 700;
-  transition: all .2s;
-  padding: .5rem;
-} */
 
 .planta1 {
-  /* @apply bg-slate-100; */
   grid-area: planta1;
-  border: 2px dashed #000;
 }
 
 .planta2 {
-  /* @apply bg-slate-100; */
   grid-area: planta2;
-  border-bottom: 2px dashed #000;
-  border-left: 2px dashed #000;
-  border-right: 2px dashed #000;
 }
 
 .planta3 {
-  /* @apply bg-slate-100; */
   grid-area: planta3;
-  border-bottom: 2px dashed #000;
-  border-top: 2px dashed #000;
-  border-left: 2px dashed #000;
 }
 
 .almacen1 {
-  /* @apply bg-slate-100; */
   grid-area: almacen1;
-  border-top: 2px dashed #000;
-  border-bottom: 2px dashed #000;
-  border-right: 2px dashed #000;
 }
 
 .almacen2 {
-  /* @apply bg-slate-100; */
   grid-area: almacen2;
-  border-top: 2px dashed #000;
-  border-right: 2px dashed #000;
 }
 
 .ssaa1 {
-  /* @apply bg-slate-100; */
   grid-area: ssaa1;
-  border-top: 2px dashed #000;
-  border-left: 2px dashed #000;
-  border-right: 2px dashed #000;
 }
 
 .ssaa2 {
-  /* @apply bg-slate-100; */
   grid-area: ssaa2;
-  border-top: 2px dashed #000;
-  border-right: 2px dashed #000;
 }
 
 .shine {
@@ -118,5 +67,21 @@
   }
   100% {
     filter: drop-shadow(0 0 1px rgba(255, 0, 0, 0.5));
+  }
+}
+
+@media (max-width: 768px) {
+  .plantMap {
+    grid-template-columns: 1fr;
+    grid-template-rows: 7fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas:
+      "ssaa1"
+      "ssaa2"
+      "planta1"
+      "planta2"
+      "planta3"
+      "almacen1"
+      "almacen2";
   }
 }
